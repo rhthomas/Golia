@@ -12,22 +12,11 @@
 #include "serial.h"
 
 // instanciate serial object
-SerialClass Serial();
+SerialClass Serial(0);
 SerialClass Serial1(1);
 SerialClass Serial2(2);
 SerialClass Serial3(3);
 SerialClass Serial4(4);
-
-/**
-    \brief Constructor.
-
-    Initialises the UART register that will be used, since the xmega series
-    have more than one UART peripheral.
-*/
-SerialClass::SerialClass()
-{
-
-}
 
 /**
     \brief Constructor.
@@ -38,7 +27,21 @@ SerialClass::SerialClass()
 */
 SerialClass::SerialClass(int uart_register)
 {
+    swich(uart_register) {
+        case 0: _uart_register = USARTC0; break;
+        case 1: _uart_register = USARTC1; break;
+        case 2: _uart_register = USARTD0; break;
+        case 3: _uart_register = USARTD1; break;
+        case 4: _uart_register = USARTE0; break;
+    }
 
+    _data_register   = _uart_register + DATA;
+    _status_register = _uart_register + STATUS;
+    _ctrlA_regiser   = _uart_register + CTRLA;
+    _ctrlB_regiser   = _uart_register + CTRLB;
+    _ctrlC_regiser   = _uart_register + CTRLC;
+    _baudA_regiser   = _uart_register + BAUDCTRLA;
+    _baudB_regiser   = _uart_register + BAUDCTRLB;
 }
 
 /**

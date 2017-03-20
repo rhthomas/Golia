@@ -15,24 +15,21 @@
 // includes
 #include <avr/io.h>
 
-/**
-    UARTC0's config register starts at 0x08A0 and each register has a fixed
-    offset from that. In which case we won't need lots of #define's.
+// UART peripheral addresses
+#define USARTC0 0x08A0
+#define USARTC1 0x08B0
+#define USARTD0 0x09A0
+#define USARTD1 0x09B0
+#define USARTE0 0x0AA0
 
-    USARTC0 0x08A0
-    USARTC1 0x08B0
-    USARTD0 0x09A0
-    USARTD1 0x09B0
-    USARTE0 0x0AA0
-
-    DATA      0x00
-    STATUS    0x01
-    CTRLA     0x03
-    CTRLB     0x04
-    CTRLC     0x05
-    BAUDCTRLA 0x06
-    BAUDCTRLB 0x07
- */
+// USART register addresses
+#define DATA      0x00
+#define STATUS    0x01
+#define CTRLA     0x03
+#define CTRLB     0x04
+#define CTRLC     0x05
+#define BAUDCTRLA 0x06
+#define BAUDCTRLB 0x07
 
 /**
     \class Serial
@@ -50,15 +47,21 @@ public: // members
 private: // methods
     /* constructor and destructor are private since Serial, Serial1, etc objects
     have already been instanciated. */
-    SerialClass();    // uses serial on PORTC0
-    SerialClass(int); // uses serial on PORTC1,...,PORTE0
+    SerialClass(int);
     ~SerialClass();
     void uart_tx(char data);
     char uart_rx();
 private: // members
     unsigned long _baud;
-    int _uart_register;
-};
+    uint8_t *_uart_register;
+    uint8_t *_data_register;
+    uint8_t *_status_register;
+    uint8_t *_ctrlA_regiser;
+    uint8_t *_ctrlB_regiser;
+    uint8_t *_ctrlC_regiser;
+    uint8_t *_baudA_regiser;
+    uint8_t *_baudB_regiser;
+}
 
 /* the library autogenerates an object called Serial so the user can simply
 include the library and call Serial.begin() */
