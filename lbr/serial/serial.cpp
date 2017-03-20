@@ -2,11 +2,13 @@
     \file serial.cpp
     \author Rhys Thomas
     \date 2017-03-14
-    \brief Custom serial library.
+    \brief Custom serial library for the AVR xmega series.
 
     This library is based heavily on the Arduino serial, with a number of
     functions removed and able to be used in avr-libc applications. No need
     for Arduino dependancies.
+
+    https://morf.lv/guide-to-xmega-usart-aka-serial-communication
 */
 
 #include "serial.h"
@@ -27,7 +29,7 @@ SerialClass Serial4(4);
 */
 SerialClass::SerialClass(int uart_register)
 {
-    swich(uart_register) {
+    switch(uart_register) {
         case 0: _uart_register = USARTC0; break;
         case 1: _uart_register = USARTC1; break;
         case 2: _uart_register = USARTD0; break;
@@ -53,18 +55,22 @@ SerialClass::~SerialClass()
 /**
     \brief Setup baudrate and register config for UART.
     \param baud Baudrate for UART communications.
-    \todo Currently not implimented. This is UART code for the Il Matto to be
-    used as a reference.
 */
 void SerialClass::begin(unsigned long baud)
 {
-    _baud = F_CPU/(baud*16UL)-1;
-    UBRR0H = _baud >> 8;
-    UBRR0L = _baud;
-    // enable the tx and rx
-    UCSR0B |= (1<<TXEN0) | (1<<RXEN0);
-    // uart config 8N1
-    UCSR0C |= (1<<UCSZ00) | (1<<UCSZ01);
+    _baud = (32000000 / (2^0 * 16 * baud)) - 1;
+
+    _baudB_regiser = 0; // make sure bscale is 0
+    _baudA_regiser = baud | 0x0FF; // register A takes 8 LSBs
+    _baudB_regiser = (0xF00 | baud) >> 8; // register B takes 4 MSBs
+
+    // disable interrupts, just for safety
+    _ctrlA_regiser = 0;
+    // 8 data bits, no parity, 1 stop bits
+    _ctrlC_regiser = USART_CHSIZE_8BIT_gc;
+
+    // enable tx and rx
+    _ctrlB_regiser = USART_TXEN_bm | USART_RXEN_bm;
 }
 
 /**
@@ -73,7 +79,7 @@ void SerialClass::begin(unsigned long baud)
 */
 void SerialClass::print(const char *string)
 {
-    while(*string != '\0') {
+    while(*string) {
         uart_tx(*string++);
     }
 }
@@ -100,12 +106,18 @@ uint8_t SerialClass::read()
 /**
     \brief Read string in from UART.
     \return String received.
-
-    Terminates at newline character.
 */
 char *SerialClass::readString()
 {
-    //!< \todo Write this.
+    int i=0;
+    char *string;
+    char character;
+
+    while(character != '\n') {
+        string[i] = character;
+        i++;
+    }
+    return string;
 }
 
 /**
@@ -118,8 +130,8 @@ void SerialClass::uart_tx(char data)
     if (data == '\n') {
         uart_tx('\r');
     }
-    while(!(UCSR0A & (1<<UDRE0)));
-    UDR0 = data;
+    while(!(_status_register & USART_DREIF_bm));
+    _data_register = data;
 }
 
 /**
@@ -128,6 +140,6 @@ void SerialClass::uart_tx(char data)
 */
 char SerialClass::uart_rx()
 {
-    while(!(UCSR0A & (1<<RXC0)));
-    return UDR0;
+    while(!(_status_register & USART_RXCIF_bm));
+    return _data_register;
 }
