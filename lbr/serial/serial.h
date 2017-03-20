@@ -16,37 +16,23 @@
 #include <avr/io.h>
 
 /**
-    \todo Write defines for UART regisers etc. Note that there are 5 UART
-    peripherals onboard the xmega chip.
+    UARTC0's config register starts at 0x08A0 and each register has a fixed
+    offset from that. In which case we won't need lots of #define's.
+
+    USARTC0 0x08A0
+    USARTC1 0x08B0
+    USARTD0 0x09A0
+    USARTD1 0x09B0
+    USARTE0 0x0AA0
+
+    DATA      0x00
+    STATUS    0x01
+    CTRLA     0x03
+    CTRLB     0x04
+    CTRLC     0x05
+    BAUDCTRLA 0x06
+    BAUDCTRLB 0x07
  */
-#if defined(__AVR_ATmega644P__)
-    // define UART registers
-#elif defined(__AVR_ATmega328P__)
-    // #define UART registers
-#elif defined(__AVR_ATxmega64A4U__)
-    // #define UART registers
-    /*
-        #define <...> USARTC0_DATA
-        #define <...> USARTC0_STATUS
-        #define <...> USARTC0_CTRLA
-        #define <...> USARTC0_CTRLB
-        #define <...> USARTC0_CTRLC
-        #define <...> USARTC0_BAUDCTRLA
-        #define <...> USARTC0_BAUDCTRLB
-    */
-    /*
-        #define <...> USARTC1_DATA
-        #define <...> USARTC1_STATUS
-        #define <...> USARTC1_CTRLA
-        #define <...> USARTC1_CTRLB
-        #define <...> USARTC1_CTRLC
-        #define <...> USARTC1_BAUDCTRLA
-        #define <...> USARTC1_BAUDCTRLB
-    */
-    /*
-        ............
-    */
-#endif
 
 /**
     \class Serial
@@ -64,7 +50,8 @@ public: // members
 private: // methods
     /* constructor and destructor are private since Serial, Serial1, etc objects
     have already been instanciated. */
-    SerialClass(int);
+    SerialClass();    // uses serial on PORTC0
+    SerialClass(int); // uses serial on PORTC1,...,PORTE0
     ~SerialClass();
     void uart_tx(char data);
     char uart_rx();
