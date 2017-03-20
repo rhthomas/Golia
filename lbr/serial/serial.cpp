@@ -3,12 +3,6 @@
     \author Rhys Thomas
     \date 2017-03-14
     \brief Custom serial library for the AVR xmega series.
-
-    This library is based heavily on the Arduino serial, with a number of
-    functions removed and able to be used in avr-libc applications. No need
-    for Arduino dependancies.
-
-    https://morf.lv/guide-to-xmega-usart-aka-serial-communication
 */
 
 #include "serial.h"
@@ -29,21 +23,13 @@ SerialClass Serial4(4);
 */
 SerialClass::SerialClass(int uart_register)
 {
-    switch(uart_register) {
+    switch (uart_register) {
         case 0: _uart_register = USARTC0; break;
         case 1: _uart_register = USARTC1; break;
         case 2: _uart_register = USARTD0; break;
         case 3: _uart_register = USARTD1; break;
         case 4: _uart_register = USARTE0; break;
     }
-
-    _data_register   = _uart_register + DATA;
-    _status_register = _uart_register + STATUS;
-    _ctrlA_regiser   = _uart_register + CTRLA;
-    _ctrlB_regiser   = _uart_register + CTRLB;
-    _ctrlC_regiser   = _uart_register + CTRLC;
-    _baudA_regiser   = _uart_register + BAUDCTRLA;
-    _baudB_regiser   = _uart_register + BAUDCTRLB;
 }
 
 /**
@@ -55,22 +41,20 @@ SerialClass::~SerialClass()
 /**
     \brief Setup baudrate and register config for UART.
     \param baud Baudrate for UART communications.
+
+    See line 2493 of include/avr/iox64a4u.h for USART_t structure definintion.
 */
 void SerialClass::begin(unsigned long baud)
 {
     _baud = (32000000 / (2^0 * 16 * baud)) - 1;
 
-    _baudB_regiser = 0; // make sure bscale is 0
-    _baudA_regiser = baud | 0x0FF; // register A takes 8 LSBs
-    _baudB_regiser = (0xF00 | baud) >> 8; // register B takes 4 MSBs
+    _uart_register.BAUDCTRLB = 0;
+    _uart_register.BAUDCTRLA = _baud | 0x0FF;
+    _uart_register.BAUDCTRLB = (0xF00 | _baud) >> 8;
 
-    // disable interrupts, just for safety
-    _ctrlA_regiser = 0;
-    // 8 data bits, no parity, 1 stop bits
-    _ctrlC_regiser = USART_CHSIZE_8BIT_gc;
-
-    // enable tx and rx
-    _ctrlB_regiser = USART_TXEN_bm | USART_RXEN_bm;
+    _uart_register.CTRLA = 0;
+    _uart_register.CTRLC = USART_CHSIZE_8BIT_gc;
+    _uart_register.CTRLB = USART_TXEN_bm | USART_RXEN_bm;
 }
 
 /**
@@ -107,11 +91,11 @@ uint8_t SerialClass::read()
     \brief Read string in from UART.
     \return String received.
 */
-char *SerialClass::readString()
+const char *SerialClass::readString()
 {
     int i=0;
     char *string;
-    char character;
+    char character = uart_rx();
 
     while(character != '\n') {
         string[i] = character;
@@ -130,8 +114,8 @@ void SerialClass::uart_tx(char data)
     if (data == '\n') {
         uart_tx('\r');
     }
-    while(!(_status_register & USART_DREIF_bm));
-    _data_register = data;
+    while(!(_uart_register.STATUS & USART_DREIF_bm));
+    _uart_register.DATA = data;
 }
 
 /**
@@ -140,6 +124,6 @@ void SerialClass::uart_tx(char data)
 */
 char SerialClass::uart_rx()
 {
-    while(!(_status_register & USART_RXCIF_bm));
-    return _data_register;
+    while(!(_uart_register.STATUS & USART_RXCIF_bm));
+    return _uart_register.DATA;
 }
