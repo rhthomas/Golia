@@ -17,5 +17,4 @@ Sipo::Sipo(int data_pin, int clock_pin, int latch_pin)
     _latch_pin = latch_pin;
 }
 
-Sipo::~Sipo()
-{ /* Left empty */ }
+Sipo::~Sipo();
