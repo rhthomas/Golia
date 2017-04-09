@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="8.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="yes"/>
@@ -10059,7 +10059,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="1.5K"/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
-<part name="S3" library="Switches" deviceset="SPDT" device="EG-1218"/>
+<part name="S" library="Switches" deviceset="SPDT" device="EG-1218" value="3"/>
 <part name="U$1" library="Connectors" deviceset="USB-MINI" device="B-PTH"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
@@ -10135,7 +10135,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <attribute name="NAME" x="171.45" y="64.9986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="171.45" y="67.818" size="1.778" layer="96"/>
 </instance>
-<instance part="S3" gate="G$1" x="193.04" y="50.8" rot="R180"/>
+<instance part="S" gate="G$1" x="193.04" y="50.8" rot="R180"/>
 <instance part="U$1" gate="G$1" x="152.4" y="66.04" rot="MR0"/>
 <instance part="GND10" gate="1" x="147.32" y="53.34"/>
 <instance part="GND11" gate="1" x="152.4" y="76.2"/>
@@ -10790,7 +10790,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="165.1" y1="66.04" x2="165.1" y2="58.42" width="0.1524" layer="91" style="longdash"/>
 <wire x1="165.1" y1="58.42" x2="165.1" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="53.34" x2="187.96" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="S3" gate="G$1" pin="2"/>
+<pinref part="S" gate="G$1" pin="2"/>
 <pinref part="U$1" gate="G$1" pin="VBUS"/>
 </segment>
 </net>
@@ -10807,7 +10807,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="165.1" y1="48.26" x2="187.96" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="X2" gate="G$1" pin="2"/>
 <wire x1="159.004" y1="43.18" x2="165.1" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="S3" gate="G$1" pin="1"/>
+<pinref part="S" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -10815,7 +10815,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="198.12" y1="50.8" x2="200.66" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="198.12" y1="40.64" x2="198.12" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="1"/>
-<pinref part="S3" gate="G$1" pin="C"/>
+<pinref part="S" gate="G$1" pin="C"/>
 <junction x="198.12" y="50.8"/>
 <pinref part="U1" gate="A" pin="VIN"/>
 </segment>
@@ -10868,16 +10868,17 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <approved hash="104,1,-5.08,53.34,IC1,VCC,+3V3,,,"/>
 <approved hash="104,1,-5.08,43.18,IC1,GND1,GND,,,"/>
 <approved hash="104,1,-5.08,45.72,IC1,GND2,GND,,,"/>
+<approved hash="104,1,200.66,50.8,U1,VIN,N$5,,,"/>
+<approved hash="104,1,215.9,38.1,U1,GND_TAB,GND,,,"/>
+<approved hash="104,1,233.68,50.8,U1,VOUT,+3V3,,,"/>
 <approved hash="113,1,90.17,42.0412,C,,,,,"/>
 <approved hash="113,1,90.17,21.7212,D,,,,,"/>
 <approved hash="113,1,90.17,59.8212,B,,,,,"/>
 <approved hash="113,1,90.1277,3.94123,E,,,,,"/>
 <approved hash="113,1,90.17,77.6012,A,,,,,"/>
 <approved hash="113,1,124.849,58.42,S1,,,,,"/>
-<approved hash="113,1,151.088,14.1012,ISP,,,,,"/>
+<approved hash="113,1,151.088,3.94123,ISP,,,,,"/>
 <approved hash="113,1,-8.99583,17.78,Q1,,,,,"/>
-<approved hash="113,1,155.766,66.1331,X1,,,,,"/>
-<approved hash="113,1,193.04,54.2205,S2,,,,,"/>
 </errors>
 </schematic>
 </drawing>
