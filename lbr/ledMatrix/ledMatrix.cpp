@@ -1,9 +1,9 @@
-/**
-    \file ledMatrix.cpp
-    \author Rhys Thomas
-    \date 2017-03-14
-    \brief
-*/
+/***************************************************************************//**
+ * @file   ledMatrix.cpp
+ * @author Rhys Thomas
+ * @date   2017-03-14
+ * @brief
+ ******************************************************************************/
 
 #include "ledMatrix.h"
 
