@@ -10315,15 +10315,15 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 </classes>
 <parts>
 <part name="IC1" library="atmel" deviceset="XMEGA16A4" device="A" value="xm64a4u"/>
-<part name="PORTC" library="pinhead" deviceset="PINHD-2X5" device=""/>
-<part name="PORTD" library="pinhead" deviceset="PINHD-2X5" device=""/>
-<part name="PORTB" library="pinhead" deviceset="PINHD-2X3" device=""/>
-<part name="PORTE" library="pinhead" deviceset="PINHD-2X3" device=""/>
+<part name="C" library="pinhead" deviceset="PINHD-2X5" device=""/>
+<part name="D" library="pinhead" deviceset="PINHD-2X5" device=""/>
+<part name="B" library="pinhead" deviceset="PINHD-2X3" device=""/>
+<part name="E" library="pinhead" deviceset="PINHD-2X3" device=""/>
 <part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
-<part name="PORTA" library="pinhead" deviceset="PINHD-2X5" device=""/>
+<part name="A" library="pinhead" deviceset="PINHD-2X5" device=""/>
 <part name="S1" library="switch-omron" deviceset="10-XX" device=""/>
 <part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
@@ -10346,7 +10346,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
-<part name="LED1" library="led" deviceset="LED" device="CHIP-LED0805" value="Power"/>
+<part name="LED1" library="led" deviceset="LED" device="CHIP-LED0805" value="PWR"/>
 <part name="LED2" library="led" deviceset="LED" device="CHIP-LED0805" value="LED"/>
 <part name="C5" library="Passives" deviceset="C" device="0603" value="22p"/>
 <part name="C6" library="Passives" deviceset="C" device="0603" value="22p"/>
@@ -10363,19 +10363,19 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 </plain>
 <instances>
 <instance part="IC1" gate="G$1" x="20.32" y="40.64"/>
-<instance part="PORTC" gate="A" x="88.9" y="40.64" smashed="yes">
+<instance part="C" gate="A" x="88.9" y="40.64" smashed="yes">
 <attribute name="NAME" x="85.09" y="48.895" size="1.778" layer="95"/>
 <attribute name="VALUE" x="82.55" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="PORTD" gate="A" x="88.9" y="20.32" smashed="yes">
+<instance part="D" gate="A" x="88.9" y="20.32" smashed="yes">
 <attribute name="NAME" x="85.09" y="28.575" size="1.778" layer="95"/>
 <attribute name="VALUE" x="82.55" y="10.16" size="1.778" layer="96"/>
 </instance>
-<instance part="PORTB" gate="A" x="88.9" y="58.42" smashed="yes">
+<instance part="B" gate="A" x="88.9" y="58.42" smashed="yes">
 <attribute name="NAME" x="85.09" y="64.135" size="1.778" layer="95"/>
 <attribute name="VALUE" x="82.55" y="50.8" size="1.778" layer="96"/>
 </instance>
-<instance part="PORTE" gate="A" x="88.9" y="2.54" smashed="yes">
+<instance part="E" gate="A" x="88.9" y="2.54" smashed="yes">
 <attribute name="NAME" x="82.55" y="8.255" size="1.778" layer="95"/>
 <attribute name="VALUE" x="82.55" y="-5.08" size="1.778" layer="96"/>
 </instance>
@@ -10383,7 +10383,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <instance part="GND" gate="1" x="109.22" y="-5.08"/>
 <instance part="GND2" gate="1" x="-7.62" y="35.56"/>
 <instance part="+3V2" gate="G$1" x="-7.62" y="68.58"/>
-<instance part="PORTA" gate="A" x="88.9" y="76.2" smashed="yes">
+<instance part="A" gate="A" x="88.9" y="76.2" smashed="yes">
 <attribute name="NAME" x="85.09" y="84.455" size="1.778" layer="95"/>
 <attribute name="VALUE" x="82.55" y="66.04" size="1.778" layer="96"/>
 </instance>
@@ -10438,26 +10438,26 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <nets>
 <net name="+3V3" class="0">
 <segment>
-<pinref part="PORTE" gate="A" pin="1"/>
+<pinref part="E" gate="A" pin="1"/>
 <wire x1="86.36" y1="5.08" x2="71.12" y2="5.08" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="5.08" x2="71.12" y2="25.4" width="0.1524" layer="91"/>
-<pinref part="PORTD" gate="A" pin="1"/>
+<pinref part="D" gate="A" pin="1"/>
 <wire x1="71.12" y1="25.4" x2="71.12" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="45.72" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="60.96" x2="71.12" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="81.28" x2="71.12" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="25.4" x2="71.12" y2="25.4" width="0.1524" layer="91"/>
 <junction x="71.12" y="25.4"/>
-<pinref part="PORTC" gate="A" pin="1"/>
+<pinref part="C" gate="A" pin="1"/>
 <wire x1="86.36" y1="45.72" x2="71.12" y2="45.72" width="0.1524" layer="91"/>
 <junction x="71.12" y="45.72"/>
-<pinref part="PORTB" gate="A" pin="1"/>
+<pinref part="B" gate="A" pin="1"/>
 <wire x1="86.36" y1="60.96" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
 <junction x="71.12" y="60.96"/>
 <wire x1="86.36" y1="81.28" x2="71.12" y2="81.28" width="0.1524" layer="91"/>
 <junction x="71.12" y="81.28"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
-<pinref part="PORTA" gate="A" pin="1"/>
+<pinref part="A" gate="A" pin="1"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="VCC1"/>
@@ -10512,24 +10512,24 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <segment>
 <wire x1="93.98" y1="81.28" x2="109.22" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="81.28" x2="109.22" y2="60.96" width="0.1524" layer="91"/>
-<pinref part="PORTB" gate="A" pin="2"/>
+<pinref part="B" gate="A" pin="2"/>
 <wire x1="109.22" y1="60.96" x2="109.22" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="45.72" x2="109.22" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="25.4" x2="109.22" y2="5.08" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="5.08" x2="109.22" y2="-2.54" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="60.96" x2="109.22" y2="60.96" width="0.1524" layer="91"/>
 <junction x="109.22" y="60.96"/>
-<pinref part="PORTC" gate="A" pin="2"/>
+<pinref part="C" gate="A" pin="2"/>
 <wire x1="93.98" y1="45.72" x2="109.22" y2="45.72" width="0.1524" layer="91"/>
 <junction x="109.22" y="45.72"/>
-<pinref part="PORTD" gate="A" pin="2"/>
+<pinref part="D" gate="A" pin="2"/>
 <wire x1="93.98" y1="25.4" x2="109.22" y2="25.4" width="0.1524" layer="91"/>
 <junction x="109.22" y="25.4"/>
-<pinref part="PORTE" gate="A" pin="2"/>
+<pinref part="E" gate="A" pin="2"/>
 <wire x1="93.98" y1="5.08" x2="109.22" y2="5.08" width="0.1524" layer="91"/>
 <junction x="109.22" y="5.08"/>
 <pinref part="GND" gate="1" pin="GND"/>
-<pinref part="PORTA" gate="A" pin="2"/>
+<pinref part="A" gate="A" pin="2"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="GND"/>
@@ -10614,7 +10614,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="10"/>
+<pinref part="A" gate="A" pin="10"/>
 <wire x1="93.98" y1="71.12" x2="101.6" y2="71.12" width="0.1524" layer="91"/>
 <label x="101.6" y="71.12" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10626,7 +10626,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="-7.62" y="5.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTE" gate="A" pin="4"/>
+<pinref part="E" gate="A" pin="4"/>
 <wire x1="101.6" y1="2.54" x2="93.98" y2="2.54" width="0.1524" layer="91"/>
 <label x="101.6" y="2.54" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10682,7 +10682,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="-7.62" y="10.16" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTE" gate="A" pin="6"/>
+<pinref part="E" gate="A" pin="6"/>
 <wire x1="93.98" y1="0" x2="101.6" y2="0" width="0.1524" layer="91"/>
 <label x="101.6" y="0" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10694,7 +10694,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="-7.62" y="7.62" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTE" gate="A" pin="5"/>
+<pinref part="E" gate="A" pin="5"/>
 <wire x1="78.74" y1="0" x2="86.36" y2="0" width="0.1524" layer="91"/>
 <label x="78.74" y="0" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10706,7 +10706,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="-7.62" y="2.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTE" gate="A" pin="3"/>
+<pinref part="E" gate="A" pin="3"/>
 <wire x1="86.36" y1="2.54" x2="78.74" y2="2.54" width="0.1524" layer="91"/>
 <label x="78.74" y="2.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10718,7 +10718,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="2.54" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="3"/>
+<pinref part="D" gate="A" pin="3"/>
 <wire x1="86.36" y1="22.86" x2="78.74" y2="22.86" width="0.1524" layer="91"/>
 <label x="78.74" y="22.86" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10730,7 +10730,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="7.62" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="5"/>
+<pinref part="D" gate="A" pin="5"/>
 <wire x1="78.74" y1="20.32" x2="86.36" y2="20.32" width="0.1524" layer="91"/>
 <label x="78.74" y="20.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10742,7 +10742,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="5.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="4"/>
+<pinref part="D" gate="A" pin="4"/>
 <wire x1="93.98" y1="22.86" x2="101.6" y2="22.86" width="0.1524" layer="91"/>
 <label x="101.6" y="22.86" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10754,7 +10754,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="10.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="6"/>
+<pinref part="D" gate="A" pin="6"/>
 <wire x1="101.6" y1="20.32" x2="93.98" y2="20.32" width="0.1524" layer="91"/>
 <label x="101.6" y="20.32" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10766,7 +10766,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="12.7" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="7"/>
+<pinref part="D" gate="A" pin="7"/>
 <wire x1="78.74" y1="17.78" x2="86.36" y2="17.78" width="0.1524" layer="91"/>
 <label x="78.74" y="17.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10778,7 +10778,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="15.24" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="8"/>
+<pinref part="D" gate="A" pin="8"/>
 <wire x1="101.6" y1="17.78" x2="93.98" y2="17.78" width="0.1524" layer="91"/>
 <label x="101.6" y="17.78" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10795,7 +10795,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="17.78" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="9"/>
+<pinref part="D" gate="A" pin="9"/>
 <wire x1="86.36" y1="15.24" x2="78.74" y2="15.24" width="0.1524" layer="91"/>
 <label x="78.74" y="15.24" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10817,7 +10817,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="20.32" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTD" gate="A" pin="10"/>
+<pinref part="D" gate="A" pin="10"/>
 <wire x1="93.98" y1="15.24" x2="101.6" y2="15.24" width="0.1524" layer="91"/>
 <label x="101.6" y="15.24" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10839,7 +10839,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="25.4" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="3"/>
+<pinref part="C" gate="A" pin="3"/>
 <wire x1="86.36" y1="43.18" x2="78.74" y2="43.18" width="0.1524" layer="91"/>
 <label x="78.74" y="43.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10851,7 +10851,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="27.94" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="4"/>
+<pinref part="C" gate="A" pin="4"/>
 <wire x1="93.98" y1="43.18" x2="101.6" y2="43.18" width="0.1524" layer="91"/>
 <label x="101.6" y="43.18" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10863,7 +10863,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="30.48" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="5"/>
+<pinref part="C" gate="A" pin="5"/>
 <wire x1="78.74" y1="40.64" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
 <label x="78.74" y="40.64" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10875,7 +10875,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="33.02" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="6"/>
+<pinref part="C" gate="A" pin="6"/>
 <wire x1="93.98" y1="40.64" x2="101.6" y2="40.64" width="0.1524" layer="91"/>
 <label x="101.6" y="40.64" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10887,7 +10887,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="35.56" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="7"/>
+<pinref part="C" gate="A" pin="7"/>
 <wire x1="86.36" y1="38.1" x2="78.74" y2="38.1" width="0.1524" layer="91"/>
 <label x="78.74" y="38.1" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10899,7 +10899,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="38.1" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="8"/>
+<pinref part="C" gate="A" pin="8"/>
 <wire x1="101.6" y1="38.1" x2="93.98" y2="38.1" width="0.1524" layer="91"/>
 <label x="101.6" y="38.1" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10911,7 +10911,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="40.64" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="9"/>
+<pinref part="C" gate="A" pin="9"/>
 <wire x1="86.36" y1="35.56" x2="78.74" y2="35.56" width="0.1524" layer="91"/>
 <label x="78.74" y="35.56" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10923,7 +10923,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="43.18" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTC" gate="A" pin="10"/>
+<pinref part="C" gate="A" pin="10"/>
 <wire x1="93.98" y1="35.56" x2="101.6" y2="35.56" width="0.1524" layer="91"/>
 <label x="101.6" y="35.56" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10935,7 +10935,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="48.26" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTB" gate="A" pin="3"/>
+<pinref part="B" gate="A" pin="3"/>
 <wire x1="86.36" y1="58.42" x2="78.74" y2="58.42" width="0.1524" layer="91"/>
 <label x="78.74" y="58.42" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10947,7 +10947,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="50.8" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTB" gate="A" pin="4"/>
+<pinref part="B" gate="A" pin="4"/>
 <wire x1="93.98" y1="58.42" x2="101.6" y2="58.42" width="0.1524" layer="91"/>
 <label x="101.6" y="58.42" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10959,7 +10959,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="53.34" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTB" gate="A" pin="5"/>
+<pinref part="B" gate="A" pin="5"/>
 <wire x1="86.36" y1="55.88" x2="78.74" y2="55.88" width="0.1524" layer="91"/>
 <label x="78.74" y="55.88" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10971,7 +10971,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="55.88" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTB" gate="A" pin="6"/>
+<pinref part="B" gate="A" pin="6"/>
 <wire x1="93.98" y1="55.88" x2="101.6" y2="55.88" width="0.1524" layer="91"/>
 <label x="101.6" y="55.88" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10983,7 +10983,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="60.96" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="3"/>
+<pinref part="A" gate="A" pin="3"/>
 <wire x1="86.36" y1="78.74" x2="78.74" y2="78.74" width="0.1524" layer="91"/>
 <label x="78.74" y="78.74" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -10995,7 +10995,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="63.5" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="4"/>
+<pinref part="A" gate="A" pin="4"/>
 <wire x1="93.98" y1="78.74" x2="101.6" y2="78.74" width="0.1524" layer="91"/>
 <label x="101.6" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -11007,7 +11007,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="66.04" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="5"/>
+<pinref part="A" gate="A" pin="5"/>
 <wire x1="78.74" y1="76.2" x2="86.36" y2="76.2" width="0.1524" layer="91"/>
 <label x="78.74" y="76.2" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -11019,7 +11019,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="68.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="6"/>
+<pinref part="A" gate="A" pin="6"/>
 <wire x1="93.98" y1="76.2" x2="101.6" y2="76.2" width="0.1524" layer="91"/>
 <label x="101.6" y="76.2" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -11031,7 +11031,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="71.12" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="7"/>
+<pinref part="A" gate="A" pin="7"/>
 <wire x1="78.74" y1="73.66" x2="86.36" y2="73.66" width="0.1524" layer="91"/>
 <label x="78.74" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -11043,7 +11043,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="73.66" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="8"/>
+<pinref part="A" gate="A" pin="8"/>
 <wire x1="101.6" y1="73.66" x2="93.98" y2="73.66" width="0.1524" layer="91"/>
 <label x="101.6" y="73.66" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -11055,7 +11055,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <label x="50.8" y="76.2" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="PORTA" gate="A" pin="9"/>
+<pinref part="A" gate="A" pin="9"/>
 <wire x1="86.36" y1="71.12" x2="78.74" y2="71.12" width="0.1524" layer="91"/>
 <label x="78.74" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -11136,6 +11136,25 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,-5.08,63.5,IC1,AVCC,+3V3,,,"/>
+<approved hash="104,1,-5.08,48.26,IC1,GND3,GND,,,"/>
+<approved hash="104,1,-5.08,58.42,IC1,VCC2,+3V3,,,"/>
+<approved hash="104,1,-5.08,55.88,IC1,VCC1,+3V3,,,"/>
+<approved hash="104,1,-5.08,53.34,IC1,VCC,+3V3,,,"/>
+<approved hash="104,1,-5.08,43.18,IC1,GND1,GND,,,"/>
+<approved hash="104,1,-5.08,45.72,IC1,GND2,GND,,,"/>
+<approved hash="113,1,90.17,42.0412,C,,,,,"/>
+<approved hash="113,1,90.17,21.7212,D,,,,,"/>
+<approved hash="113,1,90.17,59.8212,B,,,,,"/>
+<approved hash="113,1,90.1277,3.94123,E,,,,,"/>
+<approved hash="113,1,90.17,77.6012,A,,,,,"/>
+<approved hash="113,1,124.849,58.42,S1,,,,,"/>
+<approved hash="113,1,151.088,14.1012,ISP,,,,,"/>
+<approved hash="113,1,-8.99583,17.78,Q1,,,,,"/>
+<approved hash="113,1,155.766,66.1331,X1,,,,,"/>
+<approved hash="113,1,193.04,54.2205,S2,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
