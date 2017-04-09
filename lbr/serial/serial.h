@@ -1,9 +1,9 @@
-/**
-    \file serial.h
-    \author Rhys Thomas
-    \date 2017-03-14
-    \brief Custom serial library for the AVR xmega series.
-*/
+/***************************************************************************//**
+ * @file   serial.h
+ * @author Rhys Thomas
+ * @date   2017-03-14
+ * @brief  Custom serial library for the AVR xmega series.
+ ******************************************************************************/
 
 #ifndef _SERIAL_H_
 #define _SERIAL_H_
@@ -12,8 +12,8 @@
 #include <avr/io.h>
 
 /**
-    \class Serial
-    \brief Contains functions to begin and print to serial via UART pins.
+ * @class Serial
+ * @brief Contains functions to begin and print to serial via UART pins.
  */
 class SerialClass
 {

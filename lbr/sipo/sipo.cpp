@@ -1,12 +1,12 @@
-/**
-    \file sipo.cpp
-    \author Rhys Thomas
-    \date 2017-03-14
-    \brief Library for 74HC595 shift register.
-
-    Interfaces 74HC595 serial-in/parallel-out shift registers with AVR
-    micro-controllers.
-*/
+/***************************************************************************//**
+ * @file   sipo.cpp
+ * @author Rhys Thomas
+ * @date   2017-03-14
+ * @brief  Library for 74HC595 shift register.
+ *******************************************************************************
+ * Interfaces 74HC595 serial-in/parallel-out shift registers with AVR
+ * micro-controllers.
+ ******************************************************************************/
 
 #include "sipo.h"
 

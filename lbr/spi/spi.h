@@ -1,32 +1,32 @@
 /***************************************************************************//**
- * @file   ledMatrix.h
+ * @file   spi.h
  * @author Rhys Thomas
- * @date   2017-03-14
- * @brief
+ * @date   2017-03-20
+ * @brief  SPI library for the Goila board.
  ******************************************************************************/
 
-#ifndef _LEDMATRIX_H_
-#define _LEDMATRIX_H_
+#ifndef _SPI_H_
+#define _SPI_H_
 
 // includes
 #include <avr/io.h>
 
 /**
- * @class Matrix
- * @brief 
- */
-class Matrix
+ * @class SPIClass
+ * @brief
+*/
+class SPIClass
 {
 public: // methods
-    Matrix();
-    ~Matrix();
-    begin();
-    set();
-    clear();
-    send();
+    SPIClass();
+    ~SPIClass();
+    void begin();
+    uint8_t xfer();
 public: // members
 private: // methods
 private: // members
 };
 
-#endif // _LEDMATRIX_H_
+extern SPIClass SPI;
+
+#endif // _SPI_H_
