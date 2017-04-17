@@ -8896,7 +8896,6 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
 <part name="A" library="pinhead" deviceset="PINHD-2X5" device=""/>
 <part name="S1" library="switch-omron" deviceset="10-XX" device=""/>
-<part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="ISP" library="pinhead" deviceset="PINHD-2X3" device=""/>
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
@@ -8916,11 +8915,10 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="LED2" library="led" deviceset="LED" device="CHIP-LED0805" value="LED2"/>
 <part name="C1" library="Passives" deviceset="C" device="0603" value="10u"/>
 <part name="C2" library="rcl" deviceset="C-EU" device="C1206" value="100u"/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="1.5K"/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
-<part name="S" library="Switches" deviceset="SPDT" device="EG-1218" value="3"/>
+<part name="S3" library="Switches" deviceset="SPDT" device="EG-1218" value="S3"/>
 <part name="USB" library="Connectors" deviceset="USB-MINI" device="B-PTH"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
@@ -8948,7 +8946,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <attribute name="VALUE" x="82.55" y="50.8" size="1.778" layer="96"/>
 </instance>
 <instance part="E" gate="A" x="88.9" y="2.54" smashed="yes">
-<attribute name="NAME" x="82.55" y="8.255" size="1.778" layer="95"/>
+<attribute name="NAME" x="85.09" y="8.255" size="1.778" layer="95"/>
 <attribute name="VALUE" x="82.55" y="-5.08" size="1.778" layer="96"/>
 </instance>
 <instance part="+3V1" gate="G$1" x="71.12" y="86.36"/>
@@ -8960,7 +8958,6 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <attribute name="VALUE" x="82.55" y="66.04" size="1.778" layer="96"/>
 </instance>
 <instance part="S1" gate="1" x="127" y="58.42"/>
-<instance part="+3V3" gate="G$1" x="127" y="83.82"/>
 <instance part="GND3" gate="1" x="127" y="48.26"/>
 <instance part="ISP" gate="A" x="149.86" y="2.54"/>
 <instance part="+3V4" gate="G$1" x="139.7" y="10.16"/>
@@ -8982,7 +8979,6 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <instance part="LED2" gate="G$1" x="205.74" y="0"/>
 <instance part="C1" gate="G$1" x="198.12" y="38.1"/>
 <instance part="C2" gate="G$1" x="236.22" y="38.1"/>
-<instance part="R1" gate="G$1" x="127" y="73.66" rot="R90"/>
 <instance part="R2" gate="G$1" x="162.56" y="78.74" rot="R90"/>
 <instance part="R3" gate="G$1" x="172.72" y="71.12" smashed="yes">
 <attribute name="NAME" x="171.45" y="72.6186" size="1.778" layer="95"/>
@@ -8992,7 +8988,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <attribute name="NAME" x="171.45" y="64.9986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="171.45" y="67.818" size="1.778" layer="96"/>
 </instance>
-<instance part="S" gate="G$1" x="193.04" y="50.8" rot="R180"/>
+<instance part="S3" gate="G$1" x="193.04" y="50.8" rot="R180"/>
 <instance part="USB" gate="G$1" x="152.4" y="66.04" smashed="yes" rot="MR0">
 <attribute name="NAME" x="144.78" y="73.66" size="1.778" layer="95" rot="MR0"/>
 </instance>
@@ -9046,11 +9042,6 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="-5.08" y1="63.5" x2="-7.62" y2="63.5" width="0.1524" layer="91"/>
 <junction x="-7.62" y="63.5"/>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
-<wire x1="127" y1="78.74" x2="127" y2="81.28" width="0.1524" layer="91" style="longdash"/>
-<pinref part="+3V3" gate="G$1" pin="+3V3"/>
-<pinref part="R1" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="ISP" gate="A" pin="1"/>
@@ -9228,12 +9219,8 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <pinref part="S1" gate="1" pin="S"/>
 <wire x1="129.54" y1="63.5" x2="127" y2="63.5" width="0.1524" layer="91" style="longdash"/>
 <junction x="127" y="63.5"/>
-<wire x1="127" y1="63.5" x2="127" y2="66.04" width="0.1524" layer="91" style="longdash"/>
-<wire x1="127" y1="66.04" x2="127" y2="68.58" width="0.1524" layer="91" style="longdash"/>
-<wire x1="127" y1="66.04" x2="132.08" y2="66.04" width="0.1524" layer="91" style="longdash"/>
-<junction x="127" y="66.04"/>
-<label x="132.08" y="66.04" size="1.27" layer="95" xref="yes"/>
-<pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="127" y1="63.5" x2="127" y2="71.12" width="0.1524" layer="91" style="longdash"/>
+<label x="127" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="PE3" class="0">
@@ -9627,7 +9614,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="165.1" y1="66.04" x2="165.1" y2="58.42" width="0.1524" layer="91" style="longdash"/>
 <wire x1="165.1" y1="58.42" x2="165.1" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="53.34" x2="187.96" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="S" gate="G$1" pin="2"/>
+<pinref part="S3" gate="G$1" pin="2"/>
 <pinref part="USB" gate="G$1" pin="VBUS"/>
 </segment>
 </net>
@@ -9644,7 +9631,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="165.1" y1="48.26" x2="187.96" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="X2" gate="G$1" pin="2"/>
 <wire x1="159.004" y1="43.18" x2="165.1" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="S" gate="G$1" pin="1"/>
+<pinref part="S3" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -9652,7 +9639,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <wire x1="198.12" y1="50.8" x2="200.66" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="198.12" y1="40.64" x2="198.12" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="1"/>
-<pinref part="S" gate="G$1" pin="C"/>
+<pinref part="S3" gate="G$1" pin="C"/>
 <junction x="198.12" y="50.8"/>
 <pinref part="U1" gate="A" pin="VIN"/>
 </segment>
@@ -9682,7 +9669,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <pinref part="USB" gate="G$1" pin="D-"/>
 </segment>
 </net>
-<net name="LED1" class="0">
+<net name="LED2" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="PR1(XT1)"/>
 <wire x1="-5.08" y1="20.32" x2="-7.62" y2="20.32" width="0.1524" layer="91"/>
@@ -9690,12 +9677,11 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 </segment>
 <segment>
 <pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="205.74" y1="15.24" x2="205.74" y2="17.78" width="0.1524" layer="91"/>
 <label x="205.74" y="17.78" size="1.778" layer="95" rot="R180" xref="yes"/>
 <wire x1="205.74" y1="15.24" x2="205.74" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="LED2" class="0">
+<net name="LED1" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="PR0(XT2)"/>
 <wire x1="-5.08" y1="15.24" x2="-7.62" y2="15.24" width="0.1524" layer="91"/>
@@ -9728,6 +9714,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <approved hash="104,1,200.66,50.8,U1,VIN,N$5,,,"/>
 <approved hash="104,1,215.9,38.1,U1,GND_TAB,GND,,,"/>
 <approved hash="104,1,233.68,50.8,U1,VOUT,+3V3,,,"/>
+<approved hash="108,1,205.74,15.24,LED2,,,,,"/>
 <approved hash="113,1,90.17,42.0412,C,,,,,"/>
 <approved hash="113,1,90.17,21.7212,D,,,,,"/>
 <approved hash="113,1,90.17,59.8212,B,,,,,"/>
@@ -9735,7 +9722,6 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <approved hash="113,1,90.17,77.6012,A,,,,,"/>
 <approved hash="113,1,124.849,58.42,S1,,,,,"/>
 <approved hash="113,1,151.088,3.94123,ISP,,,,,"/>
-<approved hash="113,1,-8.99583,17.78,Q1,,,,,"/>
 </errors>
 </schematic>
 </drawing>
