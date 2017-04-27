@@ -2,14 +2,14 @@
  * @file   sipo.h
  * @author Rhys Thomas
  * @date   2017-03-14
- * @brief  Library for 74HC595 shift register.
+ * @brief  Library for 74HC595/74HC164 shift register.
  *******************************************************************************
- * Interfaces 74HC595 serial-in/parallel-out shift registers with AVR
+ * Interfaces 74HC595/74HC164 serial-in/parallel-out shift registers with AVR
  * micro-controllers.
  ******************************************************************************/
 
-#ifndef _SIPO_H_
-#define _SIPO_H_
+#ifndef SIPO_H
+#define SIPO_H
 
 // includes
 #include <avr/io.h>
@@ -21,14 +21,17 @@
 class Sipo
 {
 public: // methods
-    Sipo(int, int, int); ///< Constructor. (AVR take registers as arguments?)
-    ~Sipo();             ///< Destructor.
+    Sipo(int dataPin, int clockPin, int latchPin);      ///< 74HC595 constructor.
+    Sipo(int dataPin, int clockPin);                    ///< 74HC164 Constructor.
+    ~Sipo(){}                                           ///< Destructor.
+    void init(int dataPin, int clockPin, int latchPin); ///< Initialiser
+    void shiftOut(byte aByte);
 public: // members
 private: // methods
 private: // members
-    int _data_pin;
-    int _clock_pin;
-    int _latch_pin;
+    int dataPin;
+    int clockPin;
+    int latchPin;
 };
 
-#endif // _SERIAL_H_
+#endif // SIPO_H

@@ -1,0 +1,47 @@
+# device parameters
+DEVICE     = atxmega64a4u
+CLOCK      = 32000000
+PROGRAMMER = usbasp
+
+# include directories and object files
+OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
+INCLUDE_DIR := $(sort $(dir $(SOURCES)))
+INCLUDE_DIR_CMD := $(addprefix -I,$(INCLUDE_DIR))
+
+# compilers
+CXX      = avr-g++
+OBJCOPY  = avr-objcopy
+AVRDUDE  = avrdude -c $(PROGRAMMER) -p $(DEVICE)
+CXXFLAGS = -mmcu=$(DEVICE) -Os -DF_CPU=$(CLOCK) $(INCLUDE_DIR_CMD)
+
+# get file dependencies then build hex
+all: $(TARGET).hex
+
+# include object dependencies
+-include Makefile.deps
+
+# generate object dependencies
+Makefile.deps: $(SOURCES)
+	$(CXX) $(CFLAGS) -MM $< > Makefile.deps
+
+# link objects into .elf
+$(TARGET).elf: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+# convert .elf to .hex
+$(TARGET).hex: $(TARGET).elf
+	$(OBJCOPY) -O ihex $< $@
+
+# see what files are included (debug)
+help:
+	@echo "src: $(SOURCES)"
+	@echo "obj: $(OBJECTS)"
+	@echo "lib: $(INCLUDE_DIR)"
+
+# remove build files
+clean:
+	-@rm -f $(OBJECTS) $(TARGET) $(TARGET).elf $(TARGET).hex Makefile.deps
+
+# flash to micro-controller
+flash: build/$(TARGET).hex
+	$(AVRDUDE) -U flash:w:$<

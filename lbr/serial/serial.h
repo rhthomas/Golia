@@ -5,8 +5,8 @@
  * @brief  Custom serial library for the AVR xmega series.
  ******************************************************************************/
 
-#ifndef _SERIAL_H_
-#define _SERIAL_H_
+#ifndef SERIAL_H
+#define SERIAL_H
 
 // includes
 #include <avr/io.h>
@@ -30,8 +30,8 @@ private: // methods
     void uart_tx(char data);
     char uart_rx();
 private: // members
-    unsigned long _baud;
-    USART_t _uart_register;
+    unsigned long baud;
+    USART_t uartRegister;
 };
 
 /* the library autogenerates an object called Serial so the user can simply
@@ -42,4 +42,4 @@ extern SerialClass Serial2;
 extern SerialClass Serial3;
 extern SerialClass Serial4;
 
-#endif // _SERIAL_H_
+#endif // SERIAL_H

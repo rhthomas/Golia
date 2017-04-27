@@ -21,14 +21,14 @@ SerialClass Serial4(4);
  * Initialises the UART register that will be used, since the xmega series have
  * more than one UART peripheral.
  */
-SerialClass::SerialClass(int uart_register)
+SerialClass::SerialClass(int uartRegister)
 {
-    switch (uart_register) {
-        case 0: _uart_register = USARTC0; break;
-        case 1: _uart_register = USARTC1; break;
-        case 2: _uart_register = USARTD0; break;
-        case 3: _uart_register = USARTD1; break;
-        case 4: _uart_register = USARTE0; break;
+    switch (uartRegister) {
+        case 0: this->uartRegister = USARTC0; break;
+        case 1: this->uartRegister = USARTC1; break;
+        case 2: this->uartRegister = USARTD0; break;
+        case 3: this->uartRegister = USARTD1; break;
+        case 4: this->uartRegister = USARTE0; break;
     }
 }
 
@@ -36,7 +36,7 @@ SerialClass::SerialClass(int uart_register)
  * @brief Destructor.
  */
 SerialClass::~SerialClass()
-{ /* Left empty */ }
+{}
 
 /**
  * @brief Setup baudrate and register config for UART.
@@ -46,20 +46,20 @@ SerialClass::~SerialClass()
  */
 void SerialClass::begin(unsigned long baud)
 {
-    _baud = (32000000 / (2^0 * 16 * baud)) - 1;
+    this->baud = (32000000 / (2^0 * 16 * baud)) - 1;
 
     // make sure BSCALE is 0
-    _uart_register.BAUDCTRLB = 0;
+    this->uartRegister.BAUDCTRLB = 0;
     // register A has 8 LSBs
-    _uart_register.BAUDCTRLA = _baud | 0x0FF;
+    this->uartRegister.BAUDCTRLA = baud | 0x0FF;
     // register B has 4 MSBs
-    _uart_register.BAUDCTRLB = (0xF00 | _baud) >> 8;
+    this->uartRegister.BAUDCTRLB = (0xF00 | baud) >> 8;
     // disable interrupts
-    _uart_register.CTRLA = 0;
+    this->uartRegister.CTRLA = 0;
     // 8 data bits, no parity, 1 stop bit
-    _uart_register.CTRLC = USART_CHSIZE_8BIT_gc;
+    this->uartRegister.CTRLC = USART_CHSIZE_8BIT_gc;
     // enable tx and rx
-    _uart_register.CTRLB = USART_TXEN_bm | USART_RXEN_bm;
+    this->uartRegister.CTRLB = USART_TXEN_bm | USART_RXEN_bm;
 }
 
 /**
@@ -119,8 +119,8 @@ void SerialClass::uart_tx(char data)
     if (data == '\n') {
         uart_tx('\r');
     }
-    while(!(_uart_register.STATUS & USART_DREIF_bm));
-    _uart_register.DATA = data;
+    while(!(this->uartRegister.STATUS & USART_DREIF_bm));
+    this->uartRegister.DATA = data;
 }
 
 /**
@@ -129,6 +129,6 @@ void SerialClass::uart_tx(char data)
 */
 char SerialClass::uart_rx()
 {
-    while(!(_uart_register.STATUS & USART_RXCIF_bm));
-    return _uart_register.DATA;
+    while(!(this->uartRegister.STATUS & USART_RXCIF_bm));
+    return this->uartRegister.DATA;
 }
