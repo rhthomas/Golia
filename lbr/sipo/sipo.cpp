@@ -19,52 +19,46 @@ Sipo::Sipo(int dataPin, int clockPin, int latchPin)
 /*
 Sipo::Sipo(int dataPin, int clockPin)
 {
-    this->dataPin = dataPin;
-    this->clockPin = clockPin;
-    this->latchPin = latchPin;
-
-    // TODO make DDRB/PORTB set based on dataPin etc.
-    // set control pins as outputs and initialise low
-    DDRB |= (sipo.data | sipo.latch | sipo.clock);
-    PORTB &= ~(sipo.data | sipo.latch | sipo.clock);
+	
 }
 */
 
 /**
  * @brief Initialise SIPO.
  */
-void init(int dataPin, int clockPin, int latchPin)
+void Sipo::init(int dataPin, int clockPin, int latchPin)
 {
     this->dataPin = dataPin;
     this->clockPin = clockPin;
     this->latchPin = latchPin;
 
-    // TODO make DDRB/PORTB set based on dataPin etc.
+    // TODO make PORTB set based on dataPin etc.
     // set control pins as outputs and initialise low
-    DDRB |= (sipo.data | sipo.latch | sipo.clock);
-    PORTB &= ~(sipo.data | sipo.latch | sipo.clock);
+    PORTB_DIR |= (this->dataPin | this->latchPin | this->clockPin);
+    PORTB_OUT &= ~(this->dataPin | this->latchPin | this->clockPin);
 }
 
 /**
  * @brief
  * @todo Make PORTB a private member.
  */
-void shiftOut(byte aByte)
+void Sipo::shiftOut(uint8_t aByte)
 {
+	// set latch low
+    PORTB_OUT &= ~this->latchPin;
     for (uint8_t i=0; i<8; i++) {
         // tests MSB of val
-        if(val & 0x80)
-            PORTB |= sipo.data;
+        if(aByte & 0x80)
+            PORTB_OUT |= this->dataPin;
         else
-            PORTB &= ~sipo.data;
+            PORTB_OUT &= ~this->dataPin;
         // pulse the clock
-        PORTB |= sipo.clock;
-        PORTB &= ~sipo.clock;
-        val<<=1; // move next bit to MSB
+        PORTB_OUT |= this->clockPin;
+        PORTB_OUT &= ~this->clockPin;
+        aByte<<=1; // move next bit to MSB
     }
-    // data set, move to output
-    PORTB |= sipo.latch;
-    PORTB &= ~sipo.latch;
+	// set latch high, output appears on '595 pins
+    PORTB_OUT |= this->latchPin;
 }
 
 /*

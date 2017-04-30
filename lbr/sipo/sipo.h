@@ -22,10 +22,10 @@ class Sipo
 {
 public: // methods
     Sipo(int dataPin, int clockPin, int latchPin);      ///< 74HC595 constructor.
-    Sipo(int dataPin, int clockPin);                    ///< 74HC164 Constructor.
+    //Sipo(int dataPin, int clockPin);                    ///< 74HC164 Constructor.
     ~Sipo(){}                                           ///< Destructor.
     void init(int dataPin, int clockPin, int latchPin); ///< Initialiser
-    void shiftOut(byte aByte);
+    void shiftOut(uint8_t aByte);
 public: // members
 private: // methods
 private: // members
