@@ -27,7 +27,7 @@ void LED::on()
 
 void LED::off()
 {
-	PORTR.OUTCLR &= (_LED1 ? PIN0_bm : PIN1_bm);
+	PORTR.OUTCLR = (_LED1 ? PIN0_bm : PIN1_bm);
 }
 
 void LED::toggle()
