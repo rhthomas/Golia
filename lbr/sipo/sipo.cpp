@@ -28,9 +28,9 @@ Sipo::Sipo(int dataPin, int clockPin)
  */
 void Sipo::init(int dataPin, int clockPin, int latchPin)
 {
-    this->dataPin = dataPin;
-    this->clockPin = clockPin;
-    this->latchPin = latchPin;
+    this->dataPin = (1<<dataPin);
+    this->clockPin = (1<<clockPin);
+    this->latchPin = (1<<latchPin);
 
     // TODO make PORTB set based on dataPin etc.
     // set control pins as outputs and initialise low
