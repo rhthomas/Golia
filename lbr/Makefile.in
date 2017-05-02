@@ -43,5 +43,5 @@ clean:
 	-@rm -f $(OBJECTS) $(TARGET) $(TARGET).elf $(TARGET).hex Makefile.deps
 
 # flash to micro-controller
-flash: build/$(TARGET).hex
+flash: $(TARGET).hex
 	$(AVRDUDE) -U flash:w:$<
