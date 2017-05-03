@@ -13,18 +13,24 @@
 // includes 
 #include <avr/io.h>
 
-class LED
-{
-public: // methods
-	LED(int _onBoardLED);
-	~LED();
-	void on();
-	void off();
-	void toggle();
-public: // members
-private: // methods
-private: // members
-	bool _LED1;
-};
+// init
+void led1_init();
+void led2_init();
+void leds_init();
+
+// on 
+void led1_on();
+void led2_on();
+void leds_on();
+
+// off
+void led1_off();
+void led2_off();
+void leds_off();
+
+// toggle
+void led1_toggle();
+void led2_toggle();
+void leds_toggle();
 
 #endif // LED_H

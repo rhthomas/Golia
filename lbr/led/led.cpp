@@ -9,28 +9,66 @@
  
 #include "led.h"
 
-LED::LED(int _onBoardLED)
+void led1_init()
 {
-	_LED1 = (_onBoardLED == 1 ? true : false);
-	PORTR.DIR = (_LED1 ? PIN0_bm : PIN1_bm);
+	PORTR.DIR = PIN0_bm;
 }
 
-LED::~LED()
+void led2_init()
 {
-	// left blank
+	PORTR.DIR = PIN1_bm;
 }
 
-void LED::on()
+void leds_init()
 {
-	PORTR.OUTSET = (_LED1 ? PIN0_bm : PIN1_bm);
+	led1_init();
+	led2_init();
 }
 
-void LED::off()
+void led1_on()
 {
-	PORTR.OUTCLR = (_LED1 ? PIN0_bm : PIN1_bm);
+	PORTR.OUTSET = PIN0_bm;
 }
 
-void LED::toggle()
+void led2_on()
 {
-	PORTR.OUTTGL = (_LED1 ? PIN0_bm : PIN1_bm);
+	PORTR.OUTSET = PIN1_bm;
+}
+
+void leds_on()
+{
+	led1_on();
+	led2_on();
+}
+
+void led1_off()
+{
+	PORTR.OUTCLR = PIN0_bm;
+}
+
+void led2_off()
+{
+	PORTR.OUTCLR = PIN1_bm;
+}
+
+void leds_off()
+{
+	led1_off();
+	led2_off();
+}
+
+void led1_toggle()
+{
+	PORTR.OUTTGL = PIN0_bm;
+}
+
+void led2_toggle()
+{
+	PORTR.OUTTGL = PIN1_bm;
+}
+
+void leds_toggle()
+{
+	led1_toggle();
+	led2_toggle();
 }
