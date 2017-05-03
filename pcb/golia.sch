@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.1.0">
+<eagle version="8.1.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="yes"/>
@@ -8889,7 +8889,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="C" library="pinhead" deviceset="PINHD-2X5" device=""/>
 <part name="D" library="pinhead" deviceset="PINHD-2X5" device=""/>
 <part name="B" library="pinhead" deviceset="PINHD-2X3" device=""/>
-<part name="E" library="pinhead" deviceset="PINHD-2X3" device=""/>
+<part name="E" library="pinhead" deviceset="PINHD-2X3" device="" value=" "/>
 <part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
@@ -9677,11 +9677,10 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <approved hash="104,1,200.66,50.8,U1,VIN,N$5,,,"/>
 <approved hash="104,1,215.9,38.1,U1,GND_TAB,GND,,,"/>
 <approved hash="104,1,233.68,50.8,U1,VOUT,+3V3,,,"/>
-<approved hash="108,1,205.74,15.24,LED2,,,,,"/>
 <approved hash="113,1,90.17,42.0412,C,,,,,"/>
 <approved hash="113,1,90.17,21.7212,D,,,,,"/>
 <approved hash="113,1,90.17,59.8212,B,,,,,"/>
-<approved hash="113,1,90.1277,3.94123,E,,,,,"/>
+<approved hash="113,1,90.17,3.94123,E,,,,,"/>
 <approved hash="113,1,90.17,77.6012,A,,,,,"/>
 <approved hash="113,1,124.849,58.42,S1,,,,,"/>
 <approved hash="113,1,151.088,3.94123,ISP,,,,,"/>

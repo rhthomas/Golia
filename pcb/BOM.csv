@@ -1,12 +1,12 @@
-Number,Part,Value,Device,Package,DescriptionMF,Our Descirption 
-3,"A,C,D",,PINHD-2X5,2X05,PIN HEADER,
-3,"B,E,ISP",,PINHD-2X3,2X03,PIN HEADER,
-1,C1,10u,C0603,C0603,,
-1,C2,100u,C-EUC1206,C1206,,
-3,"LED1,2,pwr",,LEDCHIP-LED0805,CHIP-LED0805,LED,
-3,"R5,6,7",330,R-EU_R0603,R0603,,
-1,S3,S3,SPDTEG-1218,EG-1218,,toggle switch from il matto
-1,U1,MCP1825S-3302E/DB,MCP1825S-3302E/DB,SOT230P700X180-4N,"IC, LDO VOLT REG, 3.3V, 0.5A",3.3v regulator from il matto
-1,X2,EXT,JST-22MM-PTH-VERT-LOCK,JST-2-2MM-PTH-VERT-LOCK,,external power header from il matto
-1,S1,,10-XX,B3F-10XX,OMRON SWITCH,reset push button from il matto
-1,USB,USB-MINIB-PTH,USB-MINIB-PTH,USB-MINIB-PTH,,usb header from il matto
+Number,Part,Value,Device,Package,DescriptionMF,Our Descirption ,,,
+3,"A,C,D",,PINHD-2X5,2X05,PIN HEADER,,,,y
+3,"B,E,ISP",,PINHD-2X3,2X03,PIN HEADER,,,,y
+1,C1,10u,C0603,C0603,,,,,y
+1,C2,100u,C-EUC1206,C1206,,,,,y
+3,"LED1,2,pwr",,LEDCHIP-LED0805,CHIP-LED0805,LED,,,,y
+3,"R5,6,7",330,R-EU_R0603,R0603,,,,,y
+1,S3,S3,SPDTEG-1218,EG-1218,,toggle switch from il matto,,,y
+1,U1,MCP1825S-3302E/DB,MCP1825S-3302E/DB,SOT230P700X180-4N,"IC, LDO VOLT REG, 3.3V, 0.5A",3.3v regulator from il matto,,,y
+1,X2,EXT,JST-22MM-PTH-VERT-LOCK,JST-2-2MM-PTH-VERT-LOCK,,external power header from il matto,,,y
+1,S1,,10-XX,B3F-10XX,OMRON SWITCH,reset push button from il matto,,,y
+1,USB,USB-MINIB-PTH,USB-MINIB-PTH,USB-MINIB-PTH,,usb header from il matto,,,y
