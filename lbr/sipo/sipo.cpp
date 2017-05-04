@@ -10,55 +10,47 @@
 
 #include "sipo.h"
 
-Sipo::Sipo(int dataPin, int clockPin, int latchPin)
-{
-    init(dataPin, clockPin, latchPin);
-}
-
-// TODO constructor for 74HC164
-/*
-Sipo::Sipo(int dataPin, int clockPin)
-{
-	
-}
-*/
-
 /**
- * @brief Initialise SIPO.
+ * @brief     Constructor initialises port and control pins.
+ * @param[in] port Port in which the register is connected to.
+ * @param[in] dataPin Pin which register data input is connected to.
+ * @param[in] latchPin Pin which register latch is connected to.
+ * @param[in] clockPin Pin which register clock is connected to.
  */
-void Sipo::init(int dataPin, int clockPin, int latchPin)
+Sipo::Sipo(PORT_t port, int dataPin, int clockPin, int latchPin)
 {
+	this->port = port;
     this->dataPin = (1<<dataPin);
     this->clockPin = (1<<clockPin);
     this->latchPin = (1<<latchPin);
 
     // TODO make PORTB set based on dataPin etc.
     // set control pins as outputs and initialise low
-    PORTB_DIR |= (this->dataPin | this->latchPin | this->clockPin);
-    PORTB_OUT &= ~(this->dataPin | this->latchPin | this->clockPin);
+    this->port.DIR |= (this->dataPin | this->latchPin | this->clockPin);
+	this->port.OUT &= ~(this->dataPin | this->latchPin | this->clockPin);
+
 }
 
 /**
  * @brief
- * @todo Make PORTB a private member.
  */
 void Sipo::shiftOut(uint8_t aByte)
 {
 	// set latch low
-    PORTB_OUT &= ~this->latchPin;
+    this->port.OUT &= ~this->latchPin;
     for (uint8_t i=0; i<8; i++) {
         // tests MSB of val
         if(aByte & 0x80)
-            PORTB_OUT |= this->dataPin;
+            this->port.OUT |= this->dataPin;
         else
-            PORTB_OUT &= ~this->dataPin;
+            this->port.OUT &= ~this->dataPin;
         // pulse the clock
-        PORTB_OUT |= this->clockPin;
-        PORTB_OUT &= ~this->clockPin;
+        this->port.OUT |= this->clockPin;
+        this->port.OUT &= ~this->clockPin;
         aByte<<=1; // move next bit to MSB
     }
 	// set latch high, output appears on '595 pins
-    PORTB_OUT |= this->latchPin;
+    this->port.OUT |= this->latchPin;
 }
 
 /*

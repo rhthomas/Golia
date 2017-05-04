@@ -3,9 +3,6 @@
  * @author Rhys Thomas
  * @date   2017-03-14
  * @brief  Library for 74HC595/74HC164 shift register.
- *******************************************************************************
- * Interfaces 74HC595/74HC164 serial-in/parallel-out shift registers with AVR
- * micro-controllers.
  ******************************************************************************/
 
 #ifndef SIPO_H
@@ -21,13 +18,14 @@
 class Sipo
 {
 public: // methods
-    Sipo(int dataPin, int clockPin, int latchPin); ///< 74HC595 constructor.
-    ~Sipo(){} ///< Destructor.
-    void init(int dataPin, int clockPin, int latchPin); ///< Initialiser
-    void shiftOut(uint8_t aByte); ///< Shift byte to register outputs.
+    Sipo(PORT_t port, int dataPin, int clockPin, int latchPin);
+    ~Sipo(){}
+    void init(int dataPin, int clockPin, int latchPin);
+    void shiftOut(uint8_t aByte);
 public: // members
 private: // methods
 private: // members
+	PORT_t port;
     int dataPin;
     int clockPin;
     int latchPin;

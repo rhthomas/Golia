@@ -11,7 +11,7 @@
 
 int main(void)
 {
-	Sipo mySipo(1,2,3);
+	Sipo mySipo(PORTB,1,2,3);
 
 	for (uint8_t i=0; i<0xff; i++) {
 		mySipo.shiftOut(i);
