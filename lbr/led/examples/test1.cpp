@@ -9,12 +9,12 @@
 
 int main()
 {
-	LED led1(1);
-	led1.on();
+	leds_toggle();
+	led1_on();
 	while(1)
 	{
 		_delay_ms(500);
-		led1.toggle();
-	};
+		leds_toggle();
+	}
 	return 0;
 }
