@@ -3,9 +3,6 @@
  * @author Rhys Thomas
  * @date   2017-03-14
  * @brief  Library for 74HC595/74HC164 shift register.
- *******************************************************************************
- * Interfaces 74HC595/74HC164 serial-in/parallel-out shift registers with AVR
- * micro-controllers.
  ******************************************************************************/
 
 #include "sipo.h"
@@ -32,7 +29,7 @@ Sipo::Sipo(PORT_t port, int dataPin, int clockPin, int latchPin)
 }
 
 /**
- * @brief
+ * @brief Shifts byte to output pins of shift register.
  */
 void Sipo::shiftOut(uint8_t aByte)
 {
@@ -54,6 +51,7 @@ void Sipo::shiftOut(uint8_t aByte)
 }
 
 /*
+// TODO used for daisy-chained registers
 void shiftOut(int aNumber)
 {
     for (uint8_t i=0; i<8*sizeof(aNumber); i++) {
