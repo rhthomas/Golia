@@ -1,5 +1,5 @@
 /*******************************************************************************
-* @file   virtualPorts.h
+* @file   virtualPorts.c
 * @author Thomas Darlison
 * @date   2017-03-30
 * @brief  Virtual Port mapping for I/O Ports

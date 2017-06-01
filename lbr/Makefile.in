@@ -4,8 +4,8 @@ CLOCK      = 32000000
 PROGRAMMER = usbasp
 
 # include directories and object files
-OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
-INCLUDE_DIR := $(sort $(dir $(SOURCES)))
+OBJECTS          = $(patsubst %.cpp,%.o,$(SOURCES))
+INCLUDE_DIR     := $(sort $(dir $(SOURCES)))
 INCLUDE_DIR_CMD := $(addprefix -I,$(INCLUDE_DIR))
 
 # compilers
