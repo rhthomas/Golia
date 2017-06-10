@@ -42,6 +42,10 @@ help:
 clean:
 	-@rm -f $(OBJECTS) $(TARGET) $(TARGET).elf $(TARGET).hex Makefile.deps
 
+# see size of binary 
+size: $(TARGET).elf
+	avr-size -C --mcu=$(DEVICE) $(TARGET).elf
+
 # flash to micro-controller
 flash: $(TARGET).hex
 	$(AVRDUDE) -U flash:w:$<
