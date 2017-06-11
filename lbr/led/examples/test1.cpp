@@ -9,7 +9,7 @@
 
 int main()
 {
-	leds_toggle();
+	leds_init();
 	led1_on();
 	while(1)
 	{
