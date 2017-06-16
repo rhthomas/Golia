@@ -11,10 +11,22 @@
 // includes
 #include <avr/io.h>
 #include <stdint.h>
+#include <avr/interrupt.h>
 
-#define MAX_TOP 65535 // = 1<<16 - 1
+#define MAX_TOP  65535	// = 1<<16 - 1
+#define MAX_TOP2 255	// = 1<<8  - 1
 
 typedef enum {TC0 = 0, TC1, TC2} timerType;
+
+// todo
+// 
+// add in all timer 2 functionailty 
+// 		- make sure timer 0 runs in normal mode
+// 		- timer 2 runs in split mode
+// add in timer 2 set compare and port output
+// ISR for timer 2 in normal mode
+// set compare/duty -> optimise for 2 chanel on timer 1
+// 
 
 class Timer
 {
@@ -28,12 +40,14 @@ public: // methods
 
 	// set freqency of timer
 	void setFreq(const float & freq);
-	void setPeriod_s(const float & period);
+	void setPeriod_s (const float & period);
 	void setPeriod_ms(const float & period);
+	void setPeriod_us(const float & period);
 	float getFreq() const;
 	uint16_t getTop() const;
 
 	// set mode and output of waves
+	void setTick(const float & freq); // OVF_vect
 	void setMode(const unsigned char mode);
 	void portOverride(const bool A, const bool B, const bool C, const bool D);
 
@@ -45,7 +59,10 @@ public: // methods
 	void setCompareC(const unsigned int C);
 	void setCompareD(const unsigned int D);
 
-	// set duty cycle for in PWM mode
+	// PWM mode
+	void initPWM (const float & freq, 
+				  const float & A, const float & B, 
+				  const float & C, const float & D);
 	void setDuty (const float & A, const float & B, 
 				  const float & C, const float & D);
 	void setDutyA(const float & A);
@@ -53,7 +70,7 @@ public: // methods
 	void setDutyC(const float & C);
 	void setDutyD(const float & D);
 private: // members
-	timerType type;
+	const timerType _type;
 	union {
 		TC0_struct* p_TC0;
 		TC1_struct* p_TC1;
@@ -62,35 +79,39 @@ private: // members
 	float _frequency; 
 	uint16_t _TOP;
 private: // methods
-	void clockSetUp(const unsigned char &clkDivider, const int &TOP);
+	void clockSetUp(const unsigned char & clkDivider, const int & TOP);
 };
 
 #endif // TIMER_H
 
 /*
-PIN		TCn0	TCn1
 
-PC0	 	OC0A
-PC1	 	OC0B
-PC2	 	OC0C
-PC3	 	OC0D
-PC4				OC1A
-PC5				OC1B
-PC6	 
-PC7	 
+// NOTE: TC0 and TC2 use same hardware 
+// therefore cannot coexist on same port
 
-PD0		OC0A
-PD1		OC0B
-PD2		OC0C
-PD3		OC0D
-PD4				OC1A
-PD5				OC1B
-PD6	 
-PD7	 
+PIN		TCn0	TCn1	TCn2
 
-PE0		OC0A
-PE1		OC0B
-PE2		OC0C
-PE3		OC0D
+PC0	 	OC0A			LCMPA
+PC1	 	OC0B			LCMPB
+PC2	 	OC0C			LCMPC
+PC3	 	OC0D			LCMPD
+PC4				OC1A	HCMPA
+PC5				OC1B	HCMPB
+PC6	 					HCMPC
+PC7	 					HCMPD
+
+PD0		OC0A			LCMPA
+PD1		OC0B			LCMPB
+PD2		OC0C			LCMPC
+PD3		OC0D			LCMPD
+PD4				OC1A	HCMPA
+PD5				OC1B	HCMPB
+PD6	 					HCMPC
+PD7	 					HCMPD
+
+PE0		OC0A			
+PE1		OC0B			
+PE2		OC0C			
+PE3		OC0D			
 	
 */
